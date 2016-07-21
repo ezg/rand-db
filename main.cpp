@@ -276,8 +276,8 @@ void exp_col_range(size_t n_tuples, const vector<Range>& col_ranges) {
     bars2.extend_from(bars1);
 
     //cout << "extended" << endl;
-    cout << "bars1: " << bars1.as_str() << endl;
-    cout << "bars2: " << bars2.as_str() << endl;
+    //cout << "bars1: " << bars1.as_str() << endl;
+    //cout << "bars2: " << bars2.as_str() << endl;
 
     cout << "dist: " << bars1.deviate_from(bars2) << endl;
 
@@ -286,8 +286,7 @@ void exp_col_range(size_t n_tuples, const vector<Range>& col_ranges) {
 
 int main() {
     const size_t n_tuples = 1000;
-    cout << "n_tuples: " << n_tuples << endl;
-    /*int multiplier = 10;
+    int multiplier = 10;
     for (Datum i = 1; i <= n_tuples; i *= multiplier) {
         for (Datum j = 1; j <= n_tuples; j *= multiplier) {
             for (Datum k = 1; k <= n_tuples; k *= multiplier) {
@@ -296,9 +295,7 @@ int main() {
         }
     }
 
-    cout << "seedb: " << euclidean_dist({0.52, 0.48}, {0.31, 0.69}) << endl;*/
-
-    exp_col_range(n_tuples, {{1, 2000}, {1, 2}, {1, 2}});
+    cout << "seedb: " << euclidean_dist({0.52, 0.48}, {0.31, 0.69}) << endl;
 
     return 0;
 }
