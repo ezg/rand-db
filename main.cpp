@@ -147,6 +147,12 @@ struct UniformRandRange {
 struct Range {
     Datum _lo;
     Datum _hi;
+
+    string as_str() const {
+        ostringstream oss;
+        oss << "[" << _lo << "," << _hi << "]";
+        return oss.str();
+    }
 };
 
 Column uniform_rand_col(size_t n_tuples, const Range& closed_interval) {
@@ -232,30 +238,56 @@ BarChart bars_3col_table(const Table& t, const Predicate& col0_pred) {
     return chart;
 }
 
+/**
+ * Exp
+ */
+void exp_col_range(size_t n_tuples, const vector<Range>& col_ranges) {
 
-int main() {
+    cout << "exp_col_range: n_tuples=" << n_tuples << ", col_ranges=";
+    for (auto& r : col_ranges) {
+        cout << r.as_str() << ",";
+    }
+    cout << endl;
+
     Table t;
-    size_t n_tuples = 100;
-    t._cols.push_back(uniform_rand_col(n_tuples, Range {1, 10}));
-    t._cols.push_back(uniform_rand_col(n_tuples, Range {1, 10}));
-    t._cols.push_back(uniform_rand_col(n_tuples, Range {1, 20}));
+    //size_t n_tuples = 100;
+    for (auto& r : col_ranges) {
+        t._cols.push_back(uniform_rand_col(n_tuples, r));
+    }
 
     BarChart bars1 = bars_3col_table(t, Predicate {0, EQ, 1});
     BarChart bars2 = bars_3col_table(t, Predicate {0, EQ, 2});
 
-    cout << "bars1: " << bars1.as_str() << endl;
-    cout << "bars2: " << bars2.as_str() << endl;
+    //cout << "bars1: " << bars1.as_str() << endl;
+    //cout << "bars2: " << bars2.as_str() << endl;
 
     // bars1 and bars2 may have different group values.
     // Need to add 0-agg-value bars to bars1 and bars2.
     bars1.extend_from(bars2);
     bars2.extend_from(bars1);
 
-    cout << "extended" << endl;
-    cout << "bars1: " << bars1.as_str() << endl;
-    cout << "bars2: " << bars2.as_str() << endl;
+    //cout << "extended" << endl;
+    //cout << "bars1: " << bars1.as_str() << endl;
+    //cout << "bars2: " << bars2.as_str() << endl;
 
     cout << "dist: " << bars1.deviate_from(bars2) << endl;
+
+}
+
+
+int main() {
+    const size_t n_tuples = 1000;
+    cout << "n_tuples: " << n_tuples << endl;
+    int multiplier = 10;
+    for (Datum i = 1; i <= n_tuples; i *= multiplier) {
+        for (Datum j = 1; j <= n_tuples; j *= multiplier) {
+            for (Datum k = 1; k <= n_tuples; k *= multiplier) {
+                exp_col_range(n_tuples, {{1, 1 + i}, {1, 1 + j}, {1, 1 + k}});
+            }
+        }
+    }
+
+    cout << "seedb: " << euclidean_dist({0.52, 0.48}, {0.31, 0.69}) << endl;
 
     return 0;
 }
