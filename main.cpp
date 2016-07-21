@@ -118,11 +118,15 @@ double euclidean_dist(const vector<double>& p1, const vector<double>& p2) {
 vector<double> normalize(const vector<double>& p) {
     double sum = 0.0;
     for (auto x : p) {
-        sum += x;
+        sum += abs(x);
     }
     vector<double> res;
-    for (auto x : p) {
-        res.push_back(x / sum);
+    if (sum == 0) {
+        res.resize(p.size(), 0.0);
+    } else {
+        for (auto x : p) {
+            res.push_back(x / sum);
+        }
     }
     return res;
 }
@@ -203,7 +207,12 @@ struct BarChart {
             assert(_bars.find(b.first) != _bars.end());
         }
 
-        return euclidean_dist(normalize(as_points()), normalize(other.as_points()));
+        vector<double> this_p = normalize(as_points());
+        vector<double> other_p = normalize(other.as_points());
+
+        return euclidean_dist(this_p, other_p);
+
+        //return euclidean_dist(normalize(as_points()), normalize(other.as_points()));
     }
 
     string as_str() const {
@@ -267,8 +276,8 @@ void exp_col_range(size_t n_tuples, const vector<Range>& col_ranges) {
     bars2.extend_from(bars1);
 
     //cout << "extended" << endl;
-    //cout << "bars1: " << bars1.as_str() << endl;
-    //cout << "bars2: " << bars2.as_str() << endl;
+    cout << "bars1: " << bars1.as_str() << endl;
+    cout << "bars2: " << bars2.as_str() << endl;
 
     cout << "dist: " << bars1.deviate_from(bars2) << endl;
 
@@ -278,7 +287,7 @@ void exp_col_range(size_t n_tuples, const vector<Range>& col_ranges) {
 int main() {
     const size_t n_tuples = 1000;
     cout << "n_tuples: " << n_tuples << endl;
-    int multiplier = 10;
+    /*int multiplier = 10;
     for (Datum i = 1; i <= n_tuples; i *= multiplier) {
         for (Datum j = 1; j <= n_tuples; j *= multiplier) {
             for (Datum k = 1; k <= n_tuples; k *= multiplier) {
@@ -287,7 +296,9 @@ int main() {
         }
     }
 
-    cout << "seedb: " << euclidean_dist({0.52, 0.48}, {0.31, 0.69}) << endl;
+    cout << "seedb: " << euclidean_dist({0.52, 0.48}, {0.31, 0.69}) << endl;*/
+
+    exp_col_range(n_tuples, {{1, 2000}, {1, 2}, {1, 2}});
 
     return 0;
 }
