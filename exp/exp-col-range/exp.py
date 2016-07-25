@@ -15,7 +15,7 @@ def std_of(xs):
     return sqrt(sum(map(lambda x: pow(x - avg, 2), xs)))
 
 
-def main():
+def overall_false_positives():
     seedb_fig1a_dist = 0.296985
     all_n_exps = []
     all_n_false_pos = []
@@ -53,14 +53,17 @@ def main():
     barlist[1].set_color('r')
 
     plt.xticks(index + bar_width, ['# exps of varying attr ranges', '# false positives (dev. > Fig(a))'])
-    plt.title('SeeDB-Fig(a)-ish exp with independent uniform random attributes')
+    plt.title('SeeDB-Fig(a)-ish query with independent uniform random attributes')
 
     plt.tight_layout()
 
     #plt.show()
-    pp = PdfPages('exp.pdf')
+    pp = PdfPages('overall_false_positives.pdf')
     plt.savefig(pp, format='pdf')
     pp.close()
+
+
+def 
 
 
 

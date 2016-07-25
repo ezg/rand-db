@@ -226,7 +226,7 @@ struct BarChart {
     }
 };
 
-BarChart bars_3col_table(const Table& t, const Predicate& col0_pred) {
+BarChart bars_3col_table(const Table& t, const vector<Predicate>& col0_pred) {
     // select avg(col2)
     // from table
     // where col0 = val
@@ -234,7 +234,7 @@ BarChart bars_3col_table(const Table& t, const Predicate& col0_pred) {
     vector<col_id_t> group_by = {1};
     col_id_t aggregate_by = 2;
 
-    map<vector<Datum>, AvgState> group_states = t.select_group_by_aggregate({ col0_pred }, group_by, aggregate_by);
+    map<vector<Datum>, AvgState> group_states = t.select_group_by_aggregate(col0_pred, group_by, aggregate_by);
 
     //map<vector<Datum>,double> bars;
     BarChart chart;
@@ -264,38 +264,43 @@ void exp_col_range(size_t n_tuples, const vector<Range>& col_ranges) {
         t._cols.push_back(uniform_rand_col(n_tuples, r));
     }
 
-    BarChart bars1 = bars_3col_table(t, Predicate {0, EQ, 1});
-    BarChart bars2 = bars_3col_table(t, Predicate {0, EQ, 2});
+    BarChart bars1 = bars_3col_table(t, { Predicate {0, EQ, 1} });
+    BarChart bars2 = bars_3col_table(t, { Predicate {0, EQ, 2} });
+    BarChart bars3 = bars_3col_table(t, {});
 
     //cout << "bars1: " << bars1.as_str() << endl;
     //cout << "bars2: " << bars2.as_str() << endl;
 
     // bars1 and bars2 may have different group values.
     // Need to add 0-agg-value bars to bars1 and bars2.
-    bars1.extend_from(bars2);
-    bars2.extend_from(bars1);
+    // bar3 is the base table viwe, so it contains all possible bars.
+    bars1.extend_from(bars3);
+    bars2.extend_from(bars3);
 
     //cout << "extended" << endl;
     //cout << "bars1: " << bars1.as_str() << endl;
     //cout << "bars2: " << bars2.as_str() << endl;
 
-    cout << "dist: " << bars1.deviate_from(bars2) << endl;
-
+    cout << "dist from other selection filter: " << bars1.deviate_from(bars2)
+    << ", dist from base: " << bars1.deviate_from(bars3) << endl;
 }
 
 
 int main() {
-    const size_t n_tuples = 1000;
+    /*const size_t n_tuples = 1000;
     int multiplier = 10;
-    for (Datum i = 1; i <= n_tuples; i *= multiplier) {
-        for (Datum j = 1; j <= n_tuples; j *= multiplier) {
-            for (Datum k = 1; k <= n_tuples; k *= multiplier) {
+    Datum max_range_upper = n_tuples;
+    for (Datum i = 1; i <= max_range_upper; i *= multiplier) {
+        for (Datum j = 1; j <= max_range_upper; j *= multiplier) {
+            for (Datum k = 1; k <= max_range_upper; k *= multiplier) {
                 exp_col_range(n_tuples, {{1, 1 + i}, {1, 1 + j}, {1, 1 + k}});
             }
         }
-    }
+    }*/
 
     cout << "seedb: " << euclidean_dist({0.52, 0.48}, {0.31, 0.69}) << endl;
+
+    cout << euclidean_dist(normalize({15, 25}), normalize({5, 5})) << endl;
 
     return 0;
 }
