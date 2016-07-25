@@ -23,7 +23,7 @@ for N = Ns
         % more black than white balls in a margin in I
         %ref_base = 0.5 * ones(1, cards(2));
         %seedb_thres = binocdf(758, 1657, 0.5);
-        p_reps = [p_reps; binocdf(floor(I * (758 / 1657)), I, p_col2_1)];
+        p_reps = [p_reps; 2 * binocdf(floor(I * (758 / 1657)), I, p_col2_1)]; % multiplied by 2 for either #black > #white or #white > #black
         %normalize([758, 1657])
         %eucli_dist(normalize([758, 1657]), normalize([380, 356]))
     end
