@@ -27,7 +27,7 @@ close all;
 % GROUP BY col2
 %
 % Note the interpretation of the process:
-% - The avg(col3) becomes count(col3) and col3 contains all 1's.
+% - The avg(col3) becomes sum(col3) and col3 contains all 1's.
 % - The filter condition on col1 can be seen as picking I, where balls to 
 % the left of I is filtered.
 % The reason why I is not always N/2 is because
@@ -41,7 +41,7 @@ close all;
 % - I is multinomial random variable.
 
 p_seedb = []; % columns for different k, rows for different trials
-n_repeat = 100;
+n_repeat = 1;
 
 N_white = 500;
 N_black = N_white;
@@ -54,28 +54,41 @@ for k = K
     for rep = 1:n_repeat
         cards = [k, 2, 1];
 
-        % I ~ Bin(N, p_col0_1)
-        p_k = 1 / cards(1) * ones(1, cards(1));
-        I = mnrnd(N, p_k);
-        I = I(1);
+        % I ~ Multi(N, [p_col0_0, p_col0_1, ... ])
+        % Univariate marginal of multinomial is binomial: Xi ~ Bin(n, pi)
+        %p_k = 1 / cards(1) * ones(1, cards(1));
+        %Is = mnrnd(N, p_k);
+        %I = Is(1);
+        p_k = 1 / cards(1);
+        I = 1:N; % ignore the case I=0, no selected tuples
+        P_I = binopdf(I, N, p_k);
+        cdf_dev = 0;
+        for i = I
+            % sum_i P(I=i)P(dev>SeeDB | I=i)
+            cdf_dev = cdf_dev + P_I(i) * 2 * binocdf(floor(i * (758 / 1657)), i, p_col2_1);
+        end
+        
+        p_reps = cdf_dev;
 
         % more black than white balls in a margin in I
         %ref_base = 0.5 * ones(1, cards(2));
         %seedb_thres = binocdf(758, 1657, 0.5);
-        p_reps = [p_reps; 2 * binocdf(floor(I * (758 / 1657)), I, p_col2_1)]; % multiplied by 2 for either #black > #white or #white > #black
+        % P(I=i)P(dev>SeeDB | I=i)
+        %p_reps = [p_reps; p_I * 2 * binocdf(floor(I * (758 / 1657)), I, p_col2_1)]; % multiplied by 2 for either #black > #white or #white > #black
         %normalize([758, 1657])
         %eucli_dist(normalize([758, 1657]), normalize([380, 356]))
     end
     p_seedb = [p_seedb, p_reps];
 end
-avg_p_seedb = mean(p_seedb);
-std_p_seedb = std(p_seedb);
+avg_p_seedb = mean(p_seedb, 1);
+std_p_seedb = std(p_seedb, 1, 1);
 hold on;
 bar(K, avg_p_seedb);
 errorbar(K, avg_p_seedb, std_p_seedb, 'r.');
 hold off;
 xlabel('filtering column cardinality');
 ylabel('probability');
+set(gca, 'XTick', K);
 title('Interestingness >= SeeDB Fig 1(a), 1000 records');
 desc = 'Reference view on base table; 1000 records';
 legend(desc, 'location', 'SouthOutside'); 
