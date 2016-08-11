@@ -1,0 +1,926 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Survey" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+  <div class="row col-xs-12 col-md-12"><!-- Instructions -->
+    <div class="panel panel-primary">
+      <div class="panel-heading"><strong>Instructions</strong></div>
+
+      <div class="panel-body">
+        <p><span style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">We are conducting an academic survey about&nbsp;</span><em style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">statistical&nbsp;correlations in habits and opinions</em><span style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">. </span></p>
+
+        <p><span style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">This questionnaire contains 100 questions on your habits and opinions, and some demographic background.&nbsp;</span><span style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">Please answer them as honestly as possible. &nbsp;We will only study&nbsp;the&nbsp;answers&nbsp;in aggregation for a statistics course, and therefore will not use the data for non-academic purposes such as&nbsp;personal identification or advertisement. &nbsp;</span></p>
+
+        <p><span style="font-size: 11.7px; line-height: 20.8px;">Note that&nbsp;the questionnaire contains quality control questions with only one correct answer (e.g. what is the result of 1+5) and those have to be answered correctly. &nbsp;&nbsp;</span></p>
+
+        <p><strong>Your work will contribute to science! &nbsp;We appreciate your help.</strong></p>
+      </div>
+    </div>
+    <!-- End Instructions --><!-- Survey Body -->
+
+
+	<section>
+	  <!-- Begining of section -->
+
+      <fieldset>
+        <label>1. What is your gender? </label>
+        <div class="radio"><label><input name="Gender" type="radio" value="Male" />Male </label></div>
+        <div class="radio"><label><input name="Gender" type="radio" value="Female" />Female </label></div>
+      </fieldset>
+
+	  <fieldset>
+        <div class="input-group">
+          <label>2. What is your age?</label> 
+          <input class="form-control" name="Age" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+      <fieldset>
+        <label>3. Which of the following best describes your highest achieved education level? </label> 
+        <select class="form-control" name="Education">
+          <option selected="selected" value="select one">- select one -</option>
+          <option value="Some High School">Some High School</option>
+          <option value="Some college, no degree">Some college, no degree</option>
+          <option value="Associates degree">Associates degree</option>
+          <option value="Bachelors degree">Bachelors degree</option>
+          <option value="Graduate degree (Masters, Doctorate, etc.)">Graduate degree (Masters, Doctorate, etc.)</option> 
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>4. What is the total income of your household? </label> 
+        <select class="form-control" name="HouseHoldIncome" size="5">
+          <option>Less than $12,500</option>
+          <option>$12,500 - $24,999</option>
+          <option>$25,000 - $37,499</option>
+          <option>$37,500 - $49,999</option>
+          <option>$50,000 - $62,499</option>
+          <option>$62,500 - $74,999</option>
+          <option>$75,000 - $87,499</option>
+          <option>$87,500 - $99,999</option>
+          <option>$100,000 or more</option> 
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>5. What is your favorite type of food? (Choose all that apply:) </label>
+		<div class="checkbox"><label><input name="FavoriteFood" type="checkbox" value="1" />Chinese </label></div>
+		<div class="checkbox"><label><input name="FavoriteFood" type="checkbox" value="2" />French </label></div>
+		<div class="checkbox"><label><input name="FavoriteFood" type="checkbox" value="3" />Indian </label></div>
+		<div class="checkbox"><label><input name="FavoriteFood" type="checkbox" value="4" />Italian </label></div>
+		<div class="checkbox"><label><input name="FavoriteFood" type="checkbox" value="5" />Mexican </label></div>
+	  </fieldset>
+
+	  <fieldset>
+        <div class="input-group">
+          <label>6. What is your height rounded up in centimeters?</label> 
+          <input class="form-control" name="Height" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+      <fieldset>
+        <label>7. What is your eye color? </label>
+		<div class="radio"><label><input name="EyeColor" type="radio" value="1" />Amber </label></div>
+		<div class="radio"><label><input name="EyeColor" type="radio" value="2" />Blue </label></div>
+		<div class="radio"><label><input name="EyeColor" type="radio" value="3" />Brown </label></div>
+		<div class="radio"><label><input name="EyeColor" type="radio" value="4" />Gray </label></div>
+		<div class="radio"><label><input name="EyeColor" type="radio" value="5" />Green </label></div>
+		<div class="radio"><label><input name="EyeColor" type="radio" value="6" />Hazel </label></div>
+	  </fieldset>
+
+      <fieldset>
+        <label>8. Which continent are you from? </label>
+		<div class="radio"><label><input name="Continent" type="radio" value="1" />Africa </label></div>
+		<div class="radio"><label><input name="Continent" type="radio" value="2" />Antarctica </label></div>
+		<div class="radio"><label><input name="Continent" type="radio" value="3" />Asia </label></div>
+		<div class="radio"><label><input name="Continent" type="radio" value="4" />Australia </label></div>
+		<div class="radio"><label><input name="Continent" type="radio" value="5" />Europe </label></div>
+		<div class="radio"><label><input name="Continent" type="radio" value="6" />North America </label></div>
+		<div class="radio"><label><input name="Continent" type="radio" value="7" />South America </label></div>
+	  </fieldset>
+
+      <fieldset>
+        <label>9. What is your marital status? </label>
+		<div class="radio"><label><input name="MaritalStatus" type="radio" value="1" />Married </label></div>
+		<div class="radio"><label><input name="MaritalStatus" type="radio" value="2" />Single </label></div>
+		<div class="radio"><label><input name="MaritalStatus" type="radio" value="3" />Divorced </label></div>
+	  </fieldset>
+
+	  <fieldset>
+        <div class="input-group">
+          <label>10. How many siblings do you have?</label> 
+          <input class="form-control" name="Siblings" size="2" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>11. What pet do you wish to own?</label>
+		<div class="checkbox"><label><input name="Pet" type="checkbox" value="1" />Dogs </label></div>
+		<div class="checkbox"><label><input name="Pet" type="checkbox" value="2" />Cats </label></div>
+		<div class="checkbox"><label><input name="Pet" type="checkbox" value="3" />Fish </label></div>
+		<div class="checkbox"><label><input name="Pet" type="checkbox" value="4" />Bird </label></div>
+		<div class="checkbox"><label><input name="Pet" type="checkbox" value="5" />Other </label></div>
+		<div class="checkbox"><label><input name="Pet" type="checkbox" value="6" />None </label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>12. What fruit do you like?</label>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="1" />Apple </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="2" />Banana </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="3" />Orange </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="4" />Pear </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="5" />Watermelon </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="6" />Strawberry </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="7" />Grape </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="8" />Other </label></div>
+		<div class="checkbox"><label><input name="Fruit" type="checkbox" value="9" />None </label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>13. Which American politician do you support?</label>
+		<div class="checkbox"><label><input name="Politician" type="checkbox" value="1" />Hillary Clinton </label></div>
+		<div class="checkbox"><label><input name="Politician" type="checkbox" value="2" />Bernie Sanders </label></div>
+		<div class="checkbox"><label><input name="Politician" type="checkbox" value="3" />Donald Trump </label></div>
+		<div class="checkbox"><label><input name="Politician" type="checkbox" value="4" />Ted Cruz </label></div>
+		<div class="checkbox"><label><input name="Politician" type="checkbox" value="5" />Other </label></div>
+		<div class="checkbox"><label><input name="Politician" type="checkbox" value="6" />None </label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>14. Which music genres do you like?</label>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="1" />Blues </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="2" />Country </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="3" />Classical </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="4" />Electronic </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="5" />Folk </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="6" />Hip Hop </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="7" />Jazz </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="8" />Latin </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="9" />Pop </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="10" />R&B and Soul </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="11" />Rock </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="12" />Other </label></div>
+		<div class="checkbox"><label><input name="MusicGenre" type="checkbox" value="13" />None </label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>15. What brand is your phone?</label>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="1" />Samsung </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="2" />Apple </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="3" />Blackberry </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="4" />HTC </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="5" />LG </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="6" />Microsoft </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="7" />Nokia </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="8" />Motorola </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="9" />Sony </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="10" />Vivo </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="11" />Xiaomi </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="12" />One Plus </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="13" />Other </label></div>
+		<div class="radio"><label><input name="PhoneBrand" type="radio" value="14" />None </label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>16. What social media do you use often?</label>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="1" />Facebook </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="2" />Twitter </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="3" />Snapchat </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="4" />Instagram </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="5" />WeChat </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="6" />Weibo </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="7" />Whatsapp </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="8" />Slack </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="9" />Line </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="10" />Skype </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="11" />Pinterest </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="12" />Google+ </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="13" />LinkedIn </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="14" />Tumblr </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="15" />Reddit </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="16" />Other </label></div>
+		<div class="checkbox"><label><input name="SocialMedia" type="checkbox" value="17" />None </label></div>
+	  </fieldset>
+
+
+
+      <fieldset>
+        <label>17. What mail service do you use the most?</label>
+		<div class="radio"><label><input name="MailService" type="radio" value="1" />Gmail</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="2" />Outlook</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="3" />Aol</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="4" />Yahoo</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="5" />ProtonMail</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="6" />iCloud</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="7" />Mail.com</label></div>
+		<div class="radio"><label><input name="MailService" type="radio" value="8" />Other</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>19. What seat do you prefer on a flight?</label>
+		<div class="radio"><label><input name="FlightSeat" type="radio" value="1" />Asle</label></div>
+		<div class="radio"><label><input name="FlightSeat" type="radio" value="2" />Middle</label></div>
+		<div class="radio"><label><input name="FlightSeat" type="radio" value="3" />Window</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>20. What type of car transmission do you prefer to drive?</label>
+		<div class="radio"><label><input name="CarTransmission" type="radio" value="1" />Manual</label></div>
+		<div class="radio"><label><input name="CarTransmission" type="radio" value="2" />Automatic</label></div>
+		<div class="radio"><label><input name="CarTransmission" type="radio" value="3" />I do not drive</label></div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>21. How many pillows do you sleep with?</label> 
+          <input class="form-control" name="Pillow" size="2" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>22. What color socks do you like to wear?</label>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="1" />Black</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="2" />Blue</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="3" />White</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="4" />Green</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="5" />Yellow</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="6" />Red</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="7" />Gray</label></div>
+		<div class="checkbox"><label><input name="ColorSocks" type="checkbox" value="8" />Other</label></div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>23. How many children do you want?</label>
+          <input class="form-control" name="ChildrenWant" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>24. Are you religious?</label>
+		<div class="radio"><label><input name="Religious" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Religious" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>25. Can you juggle?</label>
+		<div class="radio"><label><input name="Juggle" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Juggle" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>26. Do you prefer baths or showers?</label>
+		<div class="radio"><label><input name="BathOrShower" type="radio" value="1" />Baths</label></div>
+		<div class="radio"><label><input name="BathOrShower" type="radio" value="2" />Showers</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>27. How do you prefer drying your hair?</label>
+		<div class="radio"><label><input name="HairDrying" type="radio" value="1" />Towel drying</label></div>
+		<div class="radio"><label><input name="HairDrying" type="radio" value="2" />Blow drying</label></div>
+		<div class="radio"><label><input name="HairDrying" type="radio" value="3" />Natural drying</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>28. Do you prefer sunrise or sunset?</label>
+		<div class="radio"><label><input name="SunriseOrSunset" type="radio" value="1" />Sunrise</label></div>
+		<div class="radio"><label><input name="SunriseOrSunset" type="radio" value="2" />Sunset</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>29. Do you like scary movies?</label>
+		<div class="radio"><label><input name="ScaryMovie" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="ScaryMovie" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>30. Can you solve sudoku puzzles?</label>
+		<div class="radio"><label><input name="Sudoku" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Sudoku" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>31. Which online shopping website do you use the most?</label>
+		<div class="radio"><label><input name="OnlineShopping" type="radio" value="1" />Amazon</label></div>
+		<div class="radio"><label><input name="OnlineShopping" type="radio" value="2" />E-Bay</label></div>
+		<div class="radio"><label><input name="OnlineShopping" type="radio" value="3" />Walmart</label></div>
+		<div class="radio"><label><input name="OnlineShopping" type="radio" value="4" />Other</label></div>
+		<div class="radio"><label><input name="OnlineShopping" type="radio" value="5" />I do not shop online</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>32. Which football teams would you like to watch right now?</label>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="1" />Leicester City</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="2" />Tottenham</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="3" />Manchester United</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="4" />Chelsea</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="5" />Manchester City</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="6" />Arsenal</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="7" />Liverpool</label></div>
+		<div class="checkbox"><label><input name="FootballTeam" type="checkbox" value="8" />Newcastle</label></div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>33. Which is your favorite country as a holiday destination?</label> 
+          <input class="form-control" name="HolidayDestination" size="20" type="text" />
+        </div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>34. How many credit cards do you have?</label> 
+          <input class="form-control" name="CreditCard" size="2" type="number" />
+        </div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>35. How many cars do you have?</label> 
+          <input class="form-control" name="Car" size="2" type="number" />
+        </div>
+	  </fieldset>
+
+	  <fieldset>
+        <div class="input-group">
+          <label>36. How many children do you have?</label> 
+          <input class="form-control" name="ChildrenHave" size="2" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>37. Do you smoke?</label>
+		<div class="radio"><label><input name="Smoke" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Smoke" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>38. What type of drink do you usually have for dinner?</label>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="1" />Wine</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="2" />Beer</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="3" />Still Water</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="4" />Sparkling Water</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="5" />Soda</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="6" />Juice</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="7" />Coffee</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="8" />Tea</label></div>
+		<div class="radio"><label><input name="DrinkForDinner" type="radio" value="9" />None</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>39. Which hand can you write with?</label>
+		<div class="radio"><label><input name="WritingHand" type="radio" value="1" />Left</label></div>
+		<div class="radio"><label><input name="WritingHand" type="radio" value="2" />Right</label></div>
+		<div class="radio"><label><input name="WritingHand" type="radio" value="3" />Both</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>40. Have you every done skydiving?</label>
+		<div class="radio"><label><input name="Skydiving" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Skydiving" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>41. How often do you exercise every week?</label> 
+          <input class="form-control" name="ExerciseWeekly" size="2" type="number" />
+        </div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>42. How many countries hav you been to?</label> 
+          <input class="form-control" name="CountriesBeenTo" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>43. What music instrument(s) do you play?</label>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="1" />Keyboard</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="2" />Piano</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="3" />Guitar</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="4" />Drum</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="5" />Violin</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="6" />Saxophone</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="7" />Trumpet</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="8" />Harmonica</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="9" />Other</label></div>
+		<div class="checkbox"><label><input name="MusicInstrument" type="checkbox" value="10" />None</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>44. Have you every been in a sauna?</label>
+		<div class="radio"><label><input name="Sauna" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Sauna" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>45. Have you every been to Paris?</label>
+		<div class="radio"><label><input name="Paris" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Paris" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>46. What is (1 + 5) / 3</label> 
+          <input class="form-control" name="QC-1" size="4" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>47. Do you know what a database system is?</label>
+		<div class="radio"><label><input name="Database" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Database" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>48. Do you know about SQL?</label>
+		<div class="radio"><label><input name="SQL" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="SQL" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>49. Your first guess of "Stonebraker" is?</label>
+		<div class="radio"><label><input name="Stonebraker" type="radio" value="1" />A Simpsons character</label></div>
+		<div class="radio"><label><input name="Stonebraker" type="radio" value="2" />A type of stone</label></div>
+		<div class="radio"><label><input name="Stonebraker" type="radio" value="3" />An antient Egyptian profession</label></div>
+		<div class="radio"><label><input name="Stonebraker" type="radio" value="4" />A Turing-award winner</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>50. Can you jump on one foot for 5 minutes non-stop?</label>
+		<div class="radio"><label><input name="JumpOnOneFoot" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="JumpOnOneFoot" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>51. Which smartphone operating system do you prefer?</label>
+		<div class="radio"><label><input name="SmartphoneOS" type="radio" value="1" />Apple iOS</label></div>
+		<div class="radio"><label><input name="SmartphoneOS" type="radio" value="2" />Android</label></div>
+		<div class="radio"><label><input name="SmartphoneOS" type="radio" value="3" />Blackberry</label></div>
+		<div class="radio"><label><input name="SmartphoneOS" type="radio" value="4" />Windows</label></div>
+		<div class="radio"><label><input name="SmartphoneOS" type="radio" value="5" />I don't know about smartphone operating systems</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>52. Your first guess of "Bluegrass" is?</label>
+		<div class="radio"><label><input name="Bluegrass" type="radio" value="1" />A type of music</label></div>
+		<div class="radio"><label><input name="Bluegrass" type="radio" value="2" />A type of color</label></div>
+		<div class="radio"><label><input name="Bluegrass" type="radio" value="3" />A type of plant</label></div>
+		<div class="radio"><label><input name="Bluegrass" type="radio" value="4" />Name of an illegal drug</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>53. Do you find the following joke funny? (Bob: Why is the Prime Minister not seen in the morning? Alice: Because she's PM not AM.)</label>
+		<div class="radio"><label><input name="SQL" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="SQL" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>54. What size are your earlobes</label>
+		<div class="radio"><label><input name="earlobe" type="radio" value="1" />Small</label></div>
+		<div class="radio"><label><input name="earlobe" type="radio" value="2" />Medium</label></div>
+		<div class="radio"><label><input name="earlobe" type="radio" value="3" />Large</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>55. Have you ever been drunk until passed out?</label>
+		<div class="radio"><label><input name="Drunk" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Drunk" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>56. Which of the following countries do you like the most?</label>
+		<div class="radio"><label><input name="LikeCountry" type="radio" value="1" />Germany</label></div>
+		<div class="radio"><label><input name="LikeCountry" type="radio" value="2" />France</label></div>
+		<div class="radio"><label><input name="LikeCountry" type="radio" value="3" />Switzerland</label></div>
+		<div class="radio"><label><input name="LikeCountry" type="radio" value="4" />Spain</label></div>
+		<div class="radio"><label><input name="LikeCountry" type="radio" value="5" />Poland</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>57. Do you agree with Brexit?</label>
+		<div class="radio"><label><input name="Brexit" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Brexit" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>58. Which hair color do you have?</label>
+		<div class="radio"><label><input name="HairColor" type="radio" value="1" />Brunette</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="2" />Blonde</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="3" />Red</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="4" />Black</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="5" />Brown</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="6" />White</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="7" />Gray</label></div>
+		<div class="radio"><label><input name="HairColor" type="radio" value="8" />I don't have hair</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>59. Which lesson do you prefer?</label>
+		<div class="radio"><label><input name="Lesson" type="radio" value="1" />Maths</label></div>
+		<div class="radio"><label><input name="Lesson" type="radio" value="2" />History</label></div>
+		<div class="radio"><label><input name="Lesson" type="radio" value="3" />Foreign Language</label></div>
+		<div class="radio"><label><input name="Lesson" type="radio" value="4" />Philosophy</label></div>
+		<div class="radio"><label><input name="Lesson" type="radio" value="5" />Computer</label></div>
+		<div class="radio"><label><input name="Lesson" type="radio" value="6" />Art</label></div>
+		<div class="radio"><label><input name="Lesson" type="radio" value="6" />Literature</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>60. Do you think global warming is mainly caused by human activity?</label>
+		<div class="radio"><label><input name="GlobalWarming" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="GlobalWarming" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+      
+      <fieldset>
+        <label>61. Do you think if aliens exist?</label>
+		<div class="radio"><label><input name="Alien" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Alien" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>62. Do you agree that marijuana consumption should be legalized?</label>
+		<div class="radio"><label><input name="marijuana" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="marijuana" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>63. Do you agree that gun control is necesary to reduce gun violence?</label>
+		<div class="radio"><label><input name="GunControl" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="GunControl" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>64. Do you think the nuclear energy is safe and viable alternative to the oil?</label>
+		<div class="radio"><label><input name="NuclearEnergy" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="NuclearEnergy" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>65. Would you rather drive an electric car or a gas-powered car?</label>
+		<div class="radio"><label><input name="ElectricOrGasCar" type="radio" value="1" />Electric</label></div>
+		<div class="radio"><label><input name="ElectricOrGasCar" type="radio" value="2" />Gas-powered</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>66. Would you rather live in the city or suburb?</label>
+		<div class="radio"><label><input name="CityOrSuburb" type="radio" value="1" />City</label></div>
+		<div class="radio"><label><input name="CityOrSuburb" type="radio" value="2" />Suburb</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>67. Would you rather work for a small startup or a big corporation?</label>
+		<div class="radio"><label><input name="StartupOrCorporation" type="radio" value="1" />Startup</label></div>
+		<div class="radio"><label><input name="StartupOrCorporation" type="radio" value="2" />Corporation</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>68. Which one do you value more for a job, money or fun?</label>
+		<div class="radio"><label><input name="JobMoneyOrFun" type="radio" value="1" />Job</label></div>
+		<div class="radio"><label><input name="JobMoneyOrFun" type="radio" value="2" />Fun</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>69. Do you play Pokemon Go?</label>
+		<div class="radio"><label><input name="PokemonGo" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="PokemonGo" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+	  <fieldset>
+        <div class="input-group">
+          <label>70. How many books do you read per year?</label> 
+          <input class="form-control" name="BookRead" size="4" type="number" />
+        </div>
+	  </fieldset>
+     
+     
+	  <fieldset>
+        <div class="input-group">
+          <label>71. How many books do you own?</label> 
+          <input class="form-control" name="BookOwned" size="4" type="number" />
+        </div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>72. Do you watch Game of Thrones?</label>
+		<div class="radio"><label><input name="GameOfThrones" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="GameOfThrones" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>73. Do you have a newspaper subscription?</label>
+		<div class="radio"><label><input name="Newspaper" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Newspaper" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>74. Do you believe in Astrology?</label>
+		<div class="radio"><label><input name="Astrology" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Astrology" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>75. What internet browser do you use the most?</label>
+		<div class="radio"><label><input name="InternetBrowser" type="radio" value="1" />Chrome</label></div>
+		<div class="radio"><label><input name="InternetBrowser" type="radio" value="2" />Firefox</label></div>
+		<div class="radio"><label><input name="InternetBrowser" type="radio" value="3" />Internet Explorer</label></div>
+		<div class="radio"><label><input name="InternetBrowser" type="radio" value="4" />Opera</label></div>
+		<div class="radio"><label><input name="InternetBrowser" type="radio" value="5" />Other</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>76. Do you have an Amazon Kindle?</label>
+		<div class="radio"><label><input name="Kindle" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Kindle" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>77. Do you think unicorns ever exist?</label>
+		<div class="radio"><label><input name="Unicorn" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Unicorn" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+      
+      <fieldset>
+        <label>78. Do you think Darwin's Theory of Evolution is more correct than wrong?</label>
+		<div class="radio"><label><input name="Darwin" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Darwin" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+      
+      <fieldset>
+        <label>79. Do you consider Princess Leia or Luke Skywalker as attractive?</label>
+		<div class="radio"><label><input name="LeiaOrSkywalker" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="LeiaOrSkywalker" type="radio" value="2" />No</label></div>
+		<div class="radio"><label><input name="LeiaOrSkywalker" type="radio" value="3" />I don't know who they are</label></div>
+	  </fieldset>
+     
+      
+      <fieldset>
+        <label>80. What flavor of potato chips do you usually have?</label>
+		<div class="radio"><label><input name="Potato" type="radio" value="1" />Barbecue</label></div>
+		<div class="radio"><label><input name="Potato" type="radio" value="2" />Cheddar & Sour Cream</label></div>
+		<div class="radio"><label><input name="Potato" type="radio" value="3" />Salt & Vinegar</label></div>
+		<div class="radio"><label><input name="Potato" type="radio" value="4" />Original</label></div>
+		<div class="radio"><label><input name="Potato" type="radio" value="5" />Other</label></div>
+		<div class="radio"><label><input name="Potato" type="radio" value="6" />None</label></div>
+	  </fieldset>
+     
+     
+	  <fieldset>
+        <div class="input-group">
+          <label>81. How many cups of coffee do you have per week on average?</label> 
+          <input class="form-control" name="Coffee" size="4" type="number" />
+        </div>
+	  </fieldset>
+     
+     
+	  <fieldset>
+        <div class="input-group">
+          <label>82. How many hours per week on average do you use internet?</label> 
+          <input class="form-control" name="InternetUsage" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>83. How many hours per week on average do you watch TV?</label> 
+          <input class="form-control" name="TV" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>84. Do you cook?</label>
+		<div class="radio"><label><input name="Cook" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Cook" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>85. Do you have a gym membership?</label>
+		<div class="radio"><label><input name="Gym" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Gym" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>86. Do you like snow?</label>
+		<div class="radio"><label><input name="Snow" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Snow" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>87. Do you like rains?</label>
+		<div class="radio"><label><input name="Rain" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Rain" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>88. Do you watch Rio Olympics on TV?</label>
+		<div class="radio"><label><input name="Olympics" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Olympics" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>89. Do you think genetically modified food is safe?</label>
+		<div class="radio"><label><input name="GMO" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="GMO" type="radio" value="2" />No</label></div>
+	  </fieldset>
+     
+     
+      <fieldset>
+        <label>90. Do you think that DNA editing technology is ethical?</label>
+		<div class="radio"><label><input name="DNA" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="DNA" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>91. Do you think the global economy is doing well or badly?</label>
+		<div class="radio"><label><input name="GlobalEconomy" type="radio" value="1" />Well</label></div>
+		<div class="radio"><label><input name="GlobalEconomy" type="radio" value="2" />Badly</label></div>
+	  </fieldset>
+
+      
+      <fieldset>
+        <label>92. Which one would you prefer to spend a 10-day vacation at?</label>
+		<div class="radio"><label><input name="Vacation" type="radio" value="1" />Beach</label></div>
+		<div class="radio"><label><input name="Vacation" type="radio" value="2" />Mountain</label></div>
+		<div class="radio"><label><input name="Vacation" type="radio" value="3" />Historical/Cultural site</label></div>
+		<div class="radio"><label><input name="Vacation" type="radio" value="4" />Island</label></div>
+		<div class="radio"><label><input name="Vacation" type="radio" value="5" />Forest</label></div>
+	  </fieldset>
+     
+
+      <fieldset>
+        <label>93. Would you rather rent or buy a house?</label>
+		<div class="radio"><label><input name="RentOrBuyHouse" type="radio" value="1" />Rent</label></div>
+		<div class="radio"><label><input name="RentOrBuyHouse" type="radio" value="2" />Buy</label></div>
+	  </fieldset>
+
+
+	  <fieldset>
+        <div class="input-group">
+          <label>94. How many apples do you have per month?</label> 
+          <input class="form-control" name="ApplePerMonth" size="3" type="number" />
+        </div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>95. Do you know how to play tennis?</label>
+		<div class="radio"><label><input name="Tennis" type="radio" value="1" />Yes</label></div>
+		<div class="radio"><label><input name="Tennis" type="radio" value="2" />No</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>96. Which animal do you think is cuter?</label>
+		<div class="radio"><label><input name="CuteAnimal" type="radio" value="1" />Panda</label></div>
+		<div class="radio"><label><input name="CuteAnimal" type="radio" value="2" />Penguin</label></div>
+		<div class="radio"><label><input name="CuteAnimal" type="radio" value="3" />Dolphin</label></div>
+		<div class="radio"><label><input name="CuteAnimal" type="radio" value="4" />Squirrel</label></div>
+	  </fieldset>
+     
+     
+     
+      <fieldset>
+        <label>97. What sport do you like?</label>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="1" />Tennis</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="2" />Soccer/Football</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="3" />American football</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="4" />Squash</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="5" />Swimming</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="6" />Track/Running</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="7" />Weight lifting</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="8" />Golf</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="9" />Table tennis</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="10" />Basketball</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="11" />Baseball</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="12" />Cricket</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="13" />Volleyball</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="14" />Badminton</label></div>
+		<div class="checkbox"><label><input name="Sport" type="checkbox" value="15" />Cycling</label></div>
+	  </fieldset>
+
+
+      <fieldset>
+        <label>98. Who do you wish to have dinner with?</label>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="1" />Michael Jordan</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="2" />Albert Einstein</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="3" />Serena Williams</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="4" />Queen Elizabeth II</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="5" />Beyonce</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="6" />Natalie Portman</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="7" />Steve Jobs</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="8" />Ronda Rousey</label></div>
+		<div class="radio"><label><input name="DinerWith" type="radio" value="9" /></label>Barack Obama</div>
+	  </fieldset>
+
+     
+      <fieldset>
+        <label>99. Would you rather go to which event?</label>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="1" />Music concert</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="2" />Dance party</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="3" />Pub / Bar</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="4" />Football game</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="5" />Book club meetup</label></div>
+        <div class="checkbox"><label><input name="Event" type="checkbox" value="6" />Video game night</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="7" />Fine dinning</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="8" />TED talk</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="9" />Stand-up comedy</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="10" />Group hiking</label></div>
+		<div class="checkbox"><label><input name="Event" type="checkbox" value="11" />Theater / cinema</label></div>
+	  </fieldset>
+      
+     
+      <fieldset>
+        <label>100. How do you prefer watching a film / movie?</label>
+        <div class="radio"><label><input name="Film" type="radio" value="1" />Online streaming</label></div>
+		<div class="radio"><label><input name="Film" type="radio" value="2" />DVD rental</label></div>
+		<div class="radio"><label><input name="Film" type="radio" value="3" />Go to the cinema</label></div>
+	  </fieldset>
+      <!-- end of section -->
+    </section>
+    <!-- End Survey Body -->
+  </div>
+</section>
+<!-- close container -->
+<style type="text/css">fieldset {
+  padding: 10px;
+  background:#fbfbfb;
+  border-radius:5px;
+  margin-bottom:5px;
+}
+</style>
+
+
+
