@@ -43,13 +43,18 @@ end
 avg_p_seedb = mean(p_seedb, 1);
 std_p_seedb = std(p_seedb, 1, 1);
 hold on;
-bar(1:size(Ns,2), avg_p_seedb);
-errorbar(1:size(Ns,2), avg_p_seedb, std_p_seedb, 'r.');
-hold off;
-set(gca, 'XTick', [1, 2, 3]);
-set(gca, 'XTickLabel', ['1e2'; '1e3'; '1e4'; ]);
+xticks = 1:size(Ns,2);
+bar(xticks, avg_p_seedb);
+errorbar(xticks, avg_p_seedb, std_p_seedb, 'r.');
+%set(gca, 'XTick', [1, 2, 3]);
+%set(gca, 'XTickLabel', ['1e2'; '1e3'; '1e4'; ]);
+ax = gca; % necessary
+ax.XTick = xticks;
+ax.XTickLabel = {'1e2', '1e3', '1e4'};
+ax.FontSize = 18;
 xlabel('# records');
 ylabel('probability');
-title('Interestingness >= SeeDB Fig 1(a), filter column cardinality=6');
-desc = 'Reference view on base table; Filter column cardinality=6.';
+title('False discovery with varying data size');
+desc = 'Using reference view on base table; Filter column cardinality=6.';
 legend(desc, 'location', 'SouthOutside'); 
+hold off;
