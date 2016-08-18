@@ -61,10 +61,15 @@ for k = K
         %I = Is(1);
         p_k = 1 / cards(1);
         I = 1:N; % ignore the case I=0, no selected tuples
-        P_I = binopdf(I, N, p_k);
+        P_I = binopdf(I, N, p_k); % Pr(I = {0, ..., N}), i.e. probabilities of different selectivities given cardinality
         cdf_dev = 0;
         for i = I
             % sum_i P(I=i)P(dev>SeeDB | I=i)
+            % times 2 because either black ball's bar or white ball's bar
+            % can cause the deviation.
+            % X ball's bar / i < 758 / 1657, so X ball's bar < i * 758 /
+            % 1657
+            % The probability of that is cumulative binomial
             cdf_dev = cdf_dev + P_I(i) * 2 * binocdf(floor(i * (758 / 1657)), i, p_col2_1);
         end
         

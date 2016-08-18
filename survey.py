@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import csv
+import math
 from scipy.stats.stats import pearsonr
 
 survey_path = './survey.csv'
@@ -13,6 +14,73 @@ id_attrs = ['assignment-id']
 radio_attrs = ['Answer.Alien', 'Answer.CityOrSuburb', 'Answer.marijuana', 'Answer.HairDrying', 'Answer.MailService', 'Answer.Brexit', 'Answer.SQL', 'Answer.Education', 'Answer.NuclearEnergy', 'Answer.GameOfThrones', 'Answer.Snow', 'Answer.LikeCountry', 'Answer.Unicorn', 'Answer.CarTransmission', 'Answer.InternetBrowser', 'Answer.Database', 'Answer.Tennis', 'Answer.Smoke', 'Answer.Bluegrass', 'Answer.EyeColor', 'Answer.PokemonGo', 'Answer.Sudoku', 'Answer.WritingHand', 'Answer.GMO', 'Answer.Skydiving', 'Answer.BathOrShower', 'Answer.Vacation', 'Answer.StartupOrCorporation', 'Answer.Olympics', 'Answer.GunControl', 'Answer.Religious', 'Answer.Potato', 'Answer.Continent', 'Answer.Juggle', 'Answer.PhoneBrand', 'Answer.MaritalStatus', 'Answer.GlobalEconomy', 'Answer.Sauna', 'Answer.OnlineShopping', 'Answer.Lesson', 'Answer.Kindle', 'Answer.SmartphoneOS', 'Answer.FlightSeat', 'Answer.DinerWith', 'Answer.HouseHoldIncome', 'Answer.Stonebraker', 'Answer.Drunk', 'Answer.JumpOnOneFoot', 'Answer.Rain', 'Answer.JobMoneyOrFun', 'Answer.Gender', 'Answer.GlobalWarming', 'Answer.ScaryMovie', 'Answer.CuteAnimal', 'Answer.Darwin', 'Answer.ElectricOrGasCar', 'Answer.LeiaOrSkywalker', 'Answer.RentOrBuyHouse', 'Answer.Cook', 'Answer.earlobe', 'Answer.DNA', 'Answer.DrinkForDinner', 'Answer.Gym', 'Answer.SunriseOrSunset', 'Answer.Paris', 'Answer.Astrology', 'Answer.Film', 'Answer.HairColor', 'Answer.Newspaper']
 
 def main():
+    survey = load_survey_table()
+
+    for filter_attr in radio_attrs:
+        for group_attr in set(radio_attrs) - set([filter_attr]):
+            for aggr_attr in set(radio_attrs) - set([filter_attr, group_attr]):
+
+                aggr_vals = list(set(survey.col_at(aggr_attr)))
+                for aggr_val in aggr_vals[:-1]:
+                    refer_view = (
+                            survey.project(
+                                [group_attr, aggr_attr])
+                            .group_aggregate(
+                                [group_attr], [aggr_attr],
+                                #lambda t_group: t_group.filter(
+                                #    lambda t_row: t_row.at(aggr_attr) == aggr_val
+                                #    ).num_rows,
+                                lambda t_group: len(list(filter(lambda x: x == aggr_val, t_group.col_at(aggr_attr)))),
+                                'aggr')
+                            )
+                    assert refer_view.num_rows > 0
+
+                    filter_vals = set(survey.col_at(filter_attr))
+                    for filter_val in filter_vals:
+                        target_view = (
+                                survey.filter(lambda t_row: t_row.at(filter_attr) == filter_val)
+                                .project(
+                                    [group_attr, aggr_attr])
+                                .group_aggregate(
+                                    [group_attr], [aggr_attr],
+                                    #lambda t_group: t_group.filter(
+                                    #    lambda t_row: t_row.at(aggr_attr) == aggr_val
+                                    #    ).num_rows,
+                                    lambda t_group: len(list(filter(lambda x: x == aggr_val, t_group.col_at(aggr_attr)))),
+                                    'aggr')
+                                )
+                        refer_p = normalize(refer_view.col_at('aggr'))
+                        target_p = normalize(target_view.col_at('aggr'))
+                        if sum(target_p) > 0:
+                            dist = distance(refer_p, target_p)
+                            if dist > seedb_fig1a_distance():
+                                print(filter_attr, ',', filter_val, ',', group_attr, ',', aggr_attr, ',', aggr_val, ',', dist)
+
+    #print(refer_view)
+    #print(target_view)
+
+    #refer_p = normalize(refer_view.col_at('aggr'))
+    #target_p = normalize(target_view.col_at('aggr'))
+    ##print(refer_p, target_p)
+    #print(distance(refer_p, target_p))
+    #print(seedb_fig1a_distance())
+
+
+def distance(xs, ys):
+    diff_vec = map(lambda x, y: x - y, xs, ys)
+    return math.sqrt(sum(map(lambda x: x * x, diff_vec)))
+
+def normalize(xs):
+    sum_xs = sum(xs)
+    if sum_xs == 0:
+        return xs
+    return [x / sum_xs for x in xs]
+
+def seedb_fig1a_distance():
+    return distance(normalize([380, 356]), normalize([758, 1657]))
+
+
+def correlation():
     survey = load_survey_table()
     #print(survey)
     #attr_set = set(survey.attrs)
@@ -72,6 +140,7 @@ def load_survey_table():
 class Table:
     # Row-major matrix
     def __init__(self, attrs, mtrx):
+        assert len(mtrx) > 0
         assert len(attrs) == len(mtrx[0])
         self.attrs = attrs
         self.mtrx = mtrx
@@ -93,7 +162,6 @@ class Table:
         assert attr in self.attrs
         col = self.attrs.index(attr)
         return [row[col] for row in self.mtrx]
-
 
     def project(self, attrs):
         cols = [self.attrs.index(attr) for attr in attrs]
