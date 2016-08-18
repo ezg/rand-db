@@ -14,8 +14,10 @@ id_attrs = ['assignment-id']
 radio_attrs = ['Answer.Alien', 'Answer.CityOrSuburb', 'Answer.marijuana', 'Answer.HairDrying', 'Answer.MailService', 'Answer.Brexit', 'Answer.SQL', 'Answer.Education', 'Answer.NuclearEnergy', 'Answer.GameOfThrones', 'Answer.Snow', 'Answer.LikeCountry', 'Answer.Unicorn', 'Answer.CarTransmission', 'Answer.InternetBrowser', 'Answer.Database', 'Answer.Tennis', 'Answer.Smoke', 'Answer.Bluegrass', 'Answer.EyeColor', 'Answer.PokemonGo', 'Answer.Sudoku', 'Answer.WritingHand', 'Answer.GMO', 'Answer.Skydiving', 'Answer.BathOrShower', 'Answer.Vacation', 'Answer.StartupOrCorporation', 'Answer.Olympics', 'Answer.GunControl', 'Answer.Religious', 'Answer.Potato', 'Answer.Continent', 'Answer.Juggle', 'Answer.PhoneBrand', 'Answer.MaritalStatus', 'Answer.GlobalEconomy', 'Answer.Sauna', 'Answer.OnlineShopping', 'Answer.Lesson', 'Answer.Kindle', 'Answer.SmartphoneOS', 'Answer.FlightSeat', 'Answer.DinerWith', 'Answer.HouseHoldIncome', 'Answer.Stonebraker', 'Answer.Drunk', 'Answer.JumpOnOneFoot', 'Answer.Rain', 'Answer.JobMoneyOrFun', 'Answer.Gender', 'Answer.GlobalWarming', 'Answer.ScaryMovie', 'Answer.CuteAnimal', 'Answer.Darwin', 'Answer.ElectricOrGasCar', 'Answer.LeiaOrSkywalker', 'Answer.RentOrBuyHouse', 'Answer.Cook', 'Answer.earlobe', 'Answer.DNA', 'Answer.DrinkForDinner', 'Answer.Gym', 'Answer.SunriseOrSunset', 'Answer.Paris', 'Answer.Astrology', 'Answer.Film', 'Answer.HairColor', 'Answer.Newspaper']
 
 def main():
+    print('attributes of multple choices,', len(radio_attrs))
     survey = load_survey_table()
 
+    n_target_refer_pairs = 0
     for filter_attr in radio_attrs:
         for group_attr in set(radio_attrs) - set([filter_attr]):
             for aggr_attr in set(radio_attrs) - set([filter_attr, group_attr]):
@@ -55,15 +57,9 @@ def main():
                             dist = distance(refer_p, target_p)
                             if dist > seedb_fig1a_distance():
                                 print(filter_attr, ',', filter_val, ',', group_attr, ',', aggr_attr, ',', aggr_val, ',', dist)
+                        n_target_refer_pairs += 1
 
-    #print(refer_view)
-    #print(target_view)
-
-    #refer_p = normalize(refer_view.col_at('aggr'))
-    #target_p = normalize(target_view.col_at('aggr'))
-    ##print(refer_p, target_p)
-    #print(distance(refer_p, target_p))
-    #print(seedb_fig1a_distance())
+    print('n_target_refer_pairs,', n_target_refer_pairs)
 
 
 def distance(xs, ys):
