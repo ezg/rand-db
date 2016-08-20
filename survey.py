@@ -19,16 +19,23 @@ id_attrs = ['assignment-id']
 radio_attrs = ['Answer.Alien', 'Answer.CityOrSuburb', 'Answer.marijuana', 'Answer.HairDrying', 'Answer.MailService', 'Answer.Brexit', 'Answer.SQL', 'Answer.Education', 'Answer.NuclearEnergy', 'Answer.GameOfThrones', 'Answer.Snow', 'Answer.LikeCountry', 'Answer.Unicorn', 'Answer.CarTransmission', 'Answer.InternetBrowser', 'Answer.Database', 'Answer.Tennis', 'Answer.Smoke', 'Answer.Bluegrass', 'Answer.EyeColor', 'Answer.PokemonGo', 'Answer.Sudoku', 'Answer.WritingHand', 'Answer.GMO', 'Answer.Skydiving', 'Answer.BathOrShower', 'Answer.Vacation', 'Answer.StartupOrCorporation', 'Answer.Olympics', 'Answer.GunControl', 'Answer.Religious', 'Answer.Potato', 'Answer.Continent', 'Answer.Juggle', 'Answer.PhoneBrand', 'Answer.MaritalStatus', 'Answer.GlobalEconomy', 'Answer.Sauna', 'Answer.OnlineShopping', 'Answer.Lesson', 'Answer.Kindle', 'Answer.SmartphoneOS', 'Answer.FlightSeat', 'Answer.DinerWith', 'Answer.HouseHoldIncome', 'Answer.Stonebraker', 'Answer.Drunk', 'Answer.JumpOnOneFoot', 'Answer.Rain', 'Answer.JobMoneyOrFun', 'Answer.Gender', 'Answer.GlobalWarming', 'Answer.ScaryMovie', 'Answer.CuteAnimal', 'Answer.Darwin', 'Answer.ElectricOrGasCar', 'Answer.LeiaOrSkywalker', 'Answer.RentOrBuyHouse', 'Answer.Cook', 'Answer.earlobe', 'Answer.DNA', 'Answer.DrinkForDinner', 'Answer.Gym', 'Answer.SunriseOrSunset', 'Answer.Paris', 'Answer.Astrology', 'Answer.Film', 'Answer.HairColor', 'Answer.Newspaper']
 
 def main():
-    seedb_vary_filter_attr()
+    seedb_one('Answer.Alien', '1', 'Answer.StartupOrCorporation', 'Answer.Potato', '2')
+    seedb_one('Answer.Alien', '2' , 'Answer.StartupOrCorporation', 'Answer.Potato', '2')
+    seedb_one('Answer.CityOrSuburb', '1', 'Answer.StartupOrCorporation','Answer.Potato', '2')
+    seedb_one('Answer.HairDrying', '2' , 'Answer.StartupOrCorporation', 'Answer.Potato', '2')
 
 
-def seedb_one():
+
+
+
+
+def seedb_one(filter_attr, filter_val, group_attr, aggr_attr, aggr_val):
     survey = load_survey_table()
 
-    filter_attr = 'Answer.Alien'
-    group_attr = 'Answer.StartupOrCorporation'
-    aggr_attr = 'Answer.Sudoku'
-    aggr_val = '2'
+    #filter_attr = 'Answer.Alien'
+    #group_attr = 'Answer.StartupOrCorporation'
+    #aggr_attr = 'Answer.Sudoku'
+    #aggr_val = '2'
     refer_view = (
             survey.project(
                 [group_attr, aggr_attr])
@@ -42,7 +49,7 @@ def seedb_one():
             )
     assert refer_view.num_rows > 0
 
-    filter_val = '2'
+    #filter_val = '2'
     target_view = (
             survey.filter(lambda t_row: t_row.at(filter_attr) == filter_val)
             .project(
@@ -64,26 +71,26 @@ def seedb_one():
     print('refer_view', refer_view)
     print('target_view', target_view)
 
-    # Plot
-    target_stats = dict(zip(target_view.col_at(group_attr), normalize(target_view.col_at('aggr'))))
-    refer_stats = dict(zip(refer_view.col_at(group_attr), normalize(refer_view.col_at('aggr'))))
+    ## Plot
+    #target_stats = dict(zip(target_view.col_at(group_attr), normalize(target_view.col_at('aggr'))))
+    #refer_stats = dict(zip(refer_view.col_at(group_attr), normalize(refer_view.col_at('aggr'))))
 
-    opacity = 0.4
-    bar_width = 0.35
-    n_bars = 2
-    index = np.arange(n_bars)
-    target_bars = plt.bar(index, [target_stats[k] for k in sorted(target_stats)], bar_width, alpha=opacity, color='b')
-    refer_bars = plt.bar(index + bar_width, [refer_stats[k] for k in sorted(refer_stats)], bar_width, alpha=opacity, color='y')
-    plt.xticks(index + bar_width, ['Startup', 'Corporation'])
-    plt.xlabel('Workplace preference')
-    plt.ylabel('# people with Sudoku incapability (normalized)')
-    target_bars.set_label('Target: Disbelief in alien existence')
-    refer_bars.set_label('Reference: All')
-    #plt.legend((target_bars[0], refer_bars[0]), ('Target: Disbelief in alien existence', 'Reference: All'))
-    plt.legend(loc='upper left')
+    #opacity = 0.4
+    #bar_width = 0.35
+    #n_bars = 2
+    #index = np.arange(n_bars)
+    #target_bars = plt.bar(index, [target_stats[k] for k in sorted(target_stats)], bar_width, alpha=opacity, color='b')
+    #refer_bars = plt.bar(index + bar_width, [refer_stats[k] for k in sorted(refer_stats)], bar_width, alpha=opacity, color='y')
+    #plt.xticks(index + bar_width, ['Startup', 'Corporation'])
+    #plt.xlabel('Workplace preference')
+    #plt.ylabel('# people with Sudoku incapability (normalized)')
+    #target_bars.set_label('Target: Disbelief in alien existence')
+    #refer_bars.set_label('Reference: All')
+    ##plt.legend((target_bars[0], refer_bars[0]), ('Target: Disbelief in alien existence', 'Reference: All'))
+    #plt.legend(loc='upper left')
 
-    plt.tight_layout()
-    plt.show()
+    #plt.tight_layout()
+    #plt.show()
 
 
 def seedb_vary_filter_attr():
