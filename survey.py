@@ -19,14 +19,14 @@ id_attrs = ['assignment-id']
 radio_attrs = ['Answer.Alien', 'Answer.CityOrSuburb', 'Answer.marijuana', 'Answer.HairDrying', 'Answer.MailService', 'Answer.Brexit', 'Answer.SQL', 'Answer.Education', 'Answer.NuclearEnergy', 'Answer.GameOfThrones', 'Answer.Snow', 'Answer.LikeCountry', 'Answer.Unicorn', 'Answer.CarTransmission', 'Answer.InternetBrowser', 'Answer.Database', 'Answer.Tennis', 'Answer.Smoke', 'Answer.Bluegrass', 'Answer.EyeColor', 'Answer.PokemonGo', 'Answer.Sudoku', 'Answer.WritingHand', 'Answer.GMO', 'Answer.Skydiving', 'Answer.BathOrShower', 'Answer.Vacation', 'Answer.StartupOrCorporation', 'Answer.Olympics', 'Answer.GunControl', 'Answer.Religious', 'Answer.Potato', 'Answer.Continent', 'Answer.Juggle', 'Answer.PhoneBrand', 'Answer.MaritalStatus', 'Answer.GlobalEconomy', 'Answer.Sauna', 'Answer.OnlineShopping', 'Answer.Lesson', 'Answer.Kindle', 'Answer.SmartphoneOS', 'Answer.FlightSeat', 'Answer.DinerWith', 'Answer.HouseHoldIncome', 'Answer.Stonebraker', 'Answer.Drunk', 'Answer.JumpOnOneFoot', 'Answer.Rain', 'Answer.JobMoneyOrFun', 'Answer.Gender', 'Answer.GlobalWarming', 'Answer.ScaryMovie', 'Answer.CuteAnimal', 'Answer.Darwin', 'Answer.ElectricOrGasCar', 'Answer.LeiaOrSkywalker', 'Answer.RentOrBuyHouse', 'Answer.Cook', 'Answer.earlobe', 'Answer.DNA', 'Answer.DrinkForDinner', 'Answer.Gym', 'Answer.SunriseOrSunset', 'Answer.Paris', 'Answer.Astrology', 'Answer.Film', 'Answer.HairColor', 'Answer.Newspaper']
 
 def main():
+    #seedb_vary_filter_attr()
+    print(seedb_fig1a_distance())
+
+def seedb_recommendation_eg():
     seedb_one('Answer.Alien', '1', 'Answer.StartupOrCorporation', 'Answer.Potato', '2')
     seedb_one('Answer.Alien', '2' , 'Answer.StartupOrCorporation', 'Answer.Potato', '2')
     seedb_one('Answer.CityOrSuburb', '1', 'Answer.StartupOrCorporation','Answer.Potato', '2')
     seedb_one('Answer.HairDrying', '2' , 'Answer.StartupOrCorporation', 'Answer.Potato', '2')
-
-
-
-
 
 
 def seedb_one(filter_attr, filter_val, group_attr, aggr_attr, aggr_val):
@@ -98,48 +98,51 @@ def seedb_vary_filter_attr():
     print('attributes of multple choices,', len(radio_attrs))
     survey = load_survey_table()
 
+    n_refers = 0
     n_target_refer_pairs = 0
     for group_attr in radio_attrs:
         for aggr_attr in set(radio_attrs) - set([group_attr]):
             aggr_vals = list(set(survey.col_at(aggr_attr)))
             for aggr_val in aggr_vals[:-1]:
-                refer_view = (
-                        survey.project(
-                            [group_attr, aggr_attr])
-                        .group_aggregate(
-                            [group_attr], [aggr_attr],
-                            #lambda t_group: t_group.filter(
-                            #    lambda t_row: t_row.at(aggr_attr) == aggr_val
-                            #    ).num_rows,
-                            lambda t_group: len(list(filter(lambda x: x == aggr_val, t_group.col_at(aggr_attr)))),
-                            'aggr')
-                        )
-                assert refer_view.num_rows > 0
+                #refer_view = (
+                #        survey.project(
+                #            [group_attr, aggr_attr])
+                #        .group_aggregate(
+                #            [group_attr], [aggr_attr],
+                #            #lambda t_group: t_group.filter(
+                #            #    lambda t_row: t_row.at(aggr_attr) == aggr_val
+                #            #    ).num_rows,
+                #            lambda t_group: len(list(filter(lambda x: x == aggr_val, t_group.col_at(aggr_attr)))),
+                #            'aggr')
+                #        )
+                #assert refer_view.num_rows > 0
+                n_refers+= 1
 
-                for filter_attr in set(radio_attrs) - set([group_attr, aggr_attr]):
-                    filter_vals = set(survey.col_at(filter_attr))
-                    for filter_val in filter_vals:
-                        target_view = (
-                                survey.filter(lambda t_row: t_row.at(filter_attr) == filter_val)
-                                .project(
-                                    [group_attr, aggr_attr])
-                                .group_aggregate(
-                                    [group_attr], [aggr_attr],
-                                    #lambda t_group: t_group.filter(
-                                    #    lambda t_row: t_row.at(aggr_attr) == aggr_val
-                                    #    ).num_rows,
-                                    lambda t_group: len(list(filter(lambda x: x == aggr_val, t_group.col_at(aggr_attr)))),
-                                    'aggr')
-                                )
-                        refer_p = normalize(refer_view.col_at('aggr'))
-                        target_p = normalize(target_view.col_at('aggr'))
-                        if sum(target_p) > 0:
-                            dist = distance(refer_p, target_p)
-                            if dist > seedb_fig1a_distance():
-                                print(filter_attr, ',', filter_val, ',', group_attr, ',', aggr_attr, ',', aggr_val, ',', dist)
-                        n_target_refer_pairs += 1
+                #for filter_attr in set(radio_attrs) - set([group_attr, aggr_attr]):
+                #    filter_vals = set(survey.col_at(filter_attr))
+                #    for filter_val in filter_vals:
+                #        target_view = (
+                #                survey.filter(lambda t_row: t_row.at(filter_attr) == filter_val)
+                #                .project(
+                #                    [group_attr, aggr_attr])
+                #                .group_aggregate(
+                #                    [group_attr], [aggr_attr],
+                #                    #lambda t_group: t_group.filter(
+                #                    #    lambda t_row: t_row.at(aggr_attr) == aggr_val
+                #                    #    ).num_rows,
+                #                    lambda t_group: len(list(filter(lambda x: x == aggr_val, t_group.col_at(aggr_attr)))),
+                #                    'aggr')
+                #                )
+                #        refer_p = normalize(refer_view.col_at('aggr'))
+                #        target_p = normalize(target_view.col_at('aggr'))
+                #        if sum(target_p) > 0:
+                #            dist = distance(refer_p, target_p)
+                #            if dist > seedb_fig1a_distance():
+                #                print(filter_attr, ',', filter_val, ',', group_attr, ',', aggr_attr, ',', aggr_val, ',', dist)
+                #        n_target_refer_pairs += 1
 
     print('n_target_refer_pairs,', n_target_refer_pairs)
+    print('n_refers,', n_refers)
 
 
 

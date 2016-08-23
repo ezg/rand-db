@@ -41,17 +41,13 @@ close all;
 % - I is multinomial random variable.
 
 p_seedb = []; % columns for different k, rows for different trials
-n_repeat = 1;
 
 N_white = 500;
 N_black = N_white;
 N = N_white + N_black;
-p_col2_1 = 0.5; % P(col1 = 1) = 0.5
+p_col2_1 = 0.5; % P(col2 = 1) = 0.5
 
-K = 2:10;
-for k = K
-    p_reps = [];
-    for rep = 1:n_repeat
+k = 6;
         cards = [k, 2, 1];
 
         % I ~ Multi(N, [p_col0_0, p_col0_1, ... ])
@@ -62,44 +58,32 @@ for k = K
         p_k = 1 / cards(1);
         I = 1:N; % ignore the case I=0, no selected tuples
         P_I = binopdf(I, N, p_k); % Pr(I = {0, ..., N}), i.e. probabilities of different selectivities given cardinality
-        cdf_dev = 0;
+        pdf_dev = [];
         for i = I
             % sum_i P(I=i)P(dev>SeeDB | I=i)
             % times 2 because either black ball's bar or white ball's bar
             % can cause the deviation.
-            % X ball's bar / i < 758 / 1657, so X ball's bar < i * 758 /
-            % 1657
-            % The probability of that is cumulative binomial
-            cdf_dev = cdf_dev + P_I(i) * 2 * binocdf(floor(i * (758 / 1657)), i, p_col2_1);
+            % devation: X ball's bar / i < 758 / 1657, so X ball's bar < i * 758 / 1657
+            % The probability of that is cumulative binomial of (x=num
+            % xballs, N=total balls, p=prob of xball).
+            pdf_dev = [pdf_dev, 2 * binocdf(floor(i * (758 / 1657)), i, p_col2_1)]; % col2 is independent from col1, so p(col2=1 | I) = p(col2=1) 
         end
-        
-        p_reps = cdf_dev;
 
-        % more black than white balls in a margin in I
-        %ref_base = 0.5 * ones(1, cards(2));
-        %seedb_thres = binocdf(758, 1657, 0.5);
-        % P(I=i)P(dev>SeeDB | I=i)
-        %p_reps = [p_reps; p_I * 2 * binocdf(floor(I * (758 / 1657)), I, p_col2_1)]; % multiplied by 2 for either #black > #white or #white > #black
-        %normalize([758, 1657])
-        %eucli_dist(normalize([758, 1657]), normalize([380, 356]))
-    end
-    p_seedb = [p_seedb, p_reps];
-end
-avg_p_seedb = mean(p_seedb, 1);
-std_p_seedb = std(p_seedb, 1, 1);
     fh = figure;
     fh.Position = [0, 0, 600, 350];
 hold on;
-xticks = 1:size(K, 2);
-bar(xticks, avg_p_seedb);
-errorbar(xticks, avg_p_seedb, std_p_seedb, 'r.');
-xlabel('Filter cardinality');
+xticks = I ./ N;
+bar(xticks, pdf_dev, 'black');
+ylim([0, 1]);
+xlim([0, 1]);
+%errorbar(xticks, avg_p_seedb, std_p_seedb, 'r.');
+xlabel('Target query selectivity');
 ylabel('probability');
 ax = gca;
-ax.XTick = xticks;
-ax.XTickLabel = strtrim(cellstr(num2str(K'))');
+%ax.XTick = xticks;
+%ax.XTickLabel = strtrim(cellstr(num2str(K'))');
 ax.FontSize = 20;
-title('False Discovery vs Filter Cardinality');
-desc = 'Reference view on base table; deviation>0.28';
+title('False Discovery vs Target Query Selectivity');
+desc = 'Reference view on base table; deviation>0.28; card.=6';
 legend(desc, 'location', 'SouthOutside'); 
 hold off;

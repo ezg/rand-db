@@ -57,7 +57,8 @@ ys = [refer; target_alien1; target_alien2; target_hairdry2];
 xls = {'Filter: All', 'Filter: Belief in Alien Existence', 'Filter: Disbelief in Alien Existence', 'Filter: Prefer Blow Hair Drying'};
 
 for i = 1:size(ys, 1)
-    figure;
+    fh = figure;
+    fh.Position = [0, 0, 520, 280];
     hold on;
     xticks = 1:n_bars;
     bar_width = 0.7;
@@ -65,9 +66,9 @@ for i = 1:size(ys, 1)
     ax = gca; % necessary
     ax.XTick = xticks;
     ax.XTickLabel = {'Startup', 'Corporation'};
-    ax.FontSize = 25;
+    ax.FontSize = 20;
     xlabel(xls(i));
     ylabel('% Cheddar & Sour Cream');
-    title('Workspace Preference');
+    title('Potato Chips vs Workspace Preference');
     hold off;
 end
